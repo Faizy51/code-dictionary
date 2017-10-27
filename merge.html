@@ -1,0 +1,225 @@
+<html>
+<body>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>CD-Sorting</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">CODE DICTIONARY</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="post.html">Programs</a>
+                    </li>
+					<li>
+                        <a href="about.html">Download</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact Us!</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>SORTING</h1>
+                      
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+				<h3>Merge Sort</h3>
+				<p>Merge Sort is one of the commonly used sorting methods.It is a comparison-based sorting algorithm.<br>It is stable when compared to heap sorting method.</p>
+					<h3>When should merge sort be used?</h3>
+					<p> When you need a stable sort and need to sort arrays.Its worst and average case performance is  O(n log n) and that of best case is O(n log n) for typical & O(n) for natural variant.</p>
+					<h3>Program :</h3>
+					<code>
+					<pre>
+#include&ltstdio.h>
+#include&ltconio.h>
+void merge(int [],int ,int ,int );
+void part(int [],int ,int );
+int main()
+{
+ int arr[30];
+ int i,size;
+ printf("\n\t------- Merge sorting method -------\n\n");
+ printf("Enter total no. of elements : ");
+ scanf("%d",&size);
+ for(i=0; i&ltsize; i++)
+ {
+   printf("Enter %d element : ",i+1);
+   scanf("%d",&arr[i]);
+ }
+ part(arr,0,size-1);
+ printf("\n\t------- Merge sorted elements -------\n\n");
+ for(i=0; i&ltsize; i++)
+ printf("%d ",arr[i]);
+ getch();
+ return 0;
+}
+
+
+void part(int arr[],int min,int max)
+{
+ int mid;
+ if(min&ltmax)
+ {
+   mid=(min+max)/2;
+   part(arr,min,mid);
+   part(arr,mid+1,max);
+   merge(arr,min,mid,max);
+ }
+}
+
+
+void merge(int arr[],int min,int mid,int max)
+{
+  int tmp[30];
+  int i,j,k,m; 
+  j=min;
+  m=mid+1;
+  for(i=min; j&lt=mid && m&lt=max ; i++)
+  {
+     if(arr[j]&lt=arr[m])
+     {
+         tmp[i]=arr[j];
+         j++;
+     }
+     else
+     {
+         tmp[i]=arr[m];
+         m++;
+     }
+  }
+  if(j>mid)
+  {
+     for(k=m; k&lt=max; k++)
+     {
+         tmp[i]=arr[k];
+         i++;
+     }
+  }
+  else
+  {
+     for(k=j; k&lt=mid; k++)
+     {
+        tmp[i]=arr[k];
+        i++;
+     }
+  }
+  for(k=min; k&lt=max; k++)
+     arr[k]=tmp[k];
+}
+</pre>
+</code>
+				</div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; code DICTIONARY 2015</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>

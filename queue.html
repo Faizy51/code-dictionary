@@ -1,0 +1,229 @@
+<html>
+<body>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>CD-Searching</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">CODE DICTIONARY</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="post.html">Programs</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact Us!</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>Data Structures</h1>
+                      
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+				<h3>QUEUE</h3>
+				<p>A Queue is a linear data structure which basically stores the data sequentially. It follows First In First Out(FIFO) order. The following section deals with various implementations of Queue. It contains programs to implement Queue using an array, linked list and to implement a priority queue to add and delete elements. In a priority queue, values come out in order by priority.</p>
+					<h3>When should Queue be used?</h3>
+									<p></p>
+					<h3>Program :</h3>
+					<code>
+					<pre>
+
+					* C Program to Implement a Queue using an Array
+ */
+#include <stdio.h>
+ 
+#define MAX 50
+int queue_array[MAX];
+int rear = - 1;
+int front = - 1;
+main()
+{
+    int choice;
+    while (1)
+    {
+        printf("1.Insert element to queue \n");
+        printf("2.Delete element from queue \n");
+        printf("3.Display all elements of queue \n");
+        printf("4.Quit \n");
+        printf("Enter your choice : ");
+        scanf("%d", &choice);
+        switch (choice)
+        {
+            case 1:
+            insert();
+            break;
+            case 2:
+            delete();
+            break;
+            case 3:
+            display();
+            break;
+            case 4:
+            exit(1);
+            default:
+            printf("Wrong choice \n");
+        } /*End of switch*/
+    } /*End of while*/
+} /*End of main()*/
+insert()
+{
+    int add_item;
+    if (rear == MAX - 1)
+    printf("Queue Overflow \n");
+    else
+    {
+        if (front == - 1)
+        /*If queue is initially empty */
+        front = 0;
+        printf("Inset the element in queue : ");
+        scanf("%d", &add_item);
+        rear = rear + 1;
+        queue_array[rear] = add_item;
+    }
+} /*End of insert()*/
+ 
+delete()
+{
+    if (front == - 1 || front > rear)
+    {
+        printf("Queue Underflow \n");
+        return ;
+    }
+    else
+    {
+        printf("Element deleted from queue is : %d\n", queue_array[front]);
+        front = front + 1;
+    }
+} /*End of delete() */
+display()
+{
+    int i;
+    if (front == - 1)
+        printf("Queue is empty \n");
+    else
+    {
+        printf("Queue is : \n");
+        for (i = front; i <= rear; i++)
+            printf("%d ", queue_array[i]);
+        printf("\n");
+    }
+}
+
+
+</pre>
+</code>
+				</div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>

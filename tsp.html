@@ -1,0 +1,253 @@
+<html>
+<body>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>CD-Other</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">CODE DICTIONARY</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="post.html">Programs</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact Us!</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>Other</h1>
+                      
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+				<h3>Travelling Salesman Problem</h3>
+				<p>The origins of the travelling salesman problem are unclear. A handbook for travelling salesmen from 1832 mentions the problem and includes example tours through Germany and Switzerland, but contains no mathematical treatment.<br>The travelling salesman problem was mathematically formulated in the 1800s by the Irish mathematician W.R. Hamilton and by the British mathematician Thomas Kirkman.</p>
+					<h3>When should Knapsack Problem be used?</h3>
+					<p>The knapsack problem or rucksack problem is a problem in combinatorial optimization: Given a set of items, each with a weight and a value, determine the number of each item to include in a collection so that the total weight is less than or equal to a given limit and the total value is as large as possible.<br>It derives its name from the problem faced by someone who is constrained by a fixed-size knapsack and must fill it with the most valuable items.<br>The problem often arises in resource allocation where there are financial constraints and is studied in fields such as combinatorics, computer science, complexity theory, cryptography and applied mathematics.</p>
+					<p>Hamilton’s Icosian Game was a recreational puzzle based on finding a Hamiltonian cycle.<br>The general form of the TSP appears to have been first studied by mathematicians during the 1930s in Vienna and at Harvard, notably by Karl Menger.<br>It was first considered mathematically in the 1930s by Merrill Flood who was looking to solve a school bus routing problem.Hassler Whitney at Princeton University introduced the name travelling salesman problem soon after.</p>
+					<h3>Program :</h3>
+					<code>
+					<pre>
+#include&ltiostream>
+#include&ltconio.h>
+using namespace std;
+#define max 100
+#define infinity 999
+int tspdp(int c[][max],int tour[],int start,int n);
+int tspnn(int c[][max],int tour[],int start,int n);
+int main()
+{
+	int n;
+	int i,j,c[max][max];
+	int tour[max],cost1,cost2;
+	printf("Travelling Salesman Problem Using Dynamic Programming and nearest neighbour approximation algorithms\n");
+	printf("\nEnter number of cities to traverse");
+	scanf("%d",&n);
+	printf("Enter cost matrix\n\n");
+	for(i=0;i &lt n;i++)
+		for(j=0;j &lt n;j++)
+		{
+			scanf("%d",&c[i][j]);
+			if(c[i][j]==0)
+			c[i][j]=999;
+		}
+	for(i=0;i &lt n;i++)
+		tour[i]=i;
+	cost1=tspdp(c,tour,0,n);
+	printf("Minimum Cost using dynamic programming:%d\n",cost1);
+	printf("Tour:\n");
+	for(i=0;i &lt n;i++)
+	printf("- %d",tour[i]);
+	printf("--0\n");
+	cost2=tspnn(c,tour,0,n);
+	printf("Minimum Cost using approximation algorithm - nearest neighbour:%d\n",cost2);
+	printf("Tour:\n");
+	for(i=0;i &lt n;i++)
+		printf("- %d",tour[i]);
+	printf("--0\n");
+	double relative_err=(double)(cost2-cost1)/cost1;
+	printf("the relative error = %d\n",relative_err);
+	getch();
+	return 0;
+}
+int tspdp(int c[][max],int tour[],int start,int n)
+{
+	int i,j,temp[max],mintour[max];
+	int mincost,ccost;
+	if(start==n-2)
+		return c[tour[n-2]][tour[n-1]]+c[tour[n-1]][0];
+	mincost=infinity;
+	for(i=start+1;i &lt n;i++)
+	{
+		for(j=0;j &lt n;j++)
+		temp[j]=tour[j];
+		temp[start+1]=tour[i];
+		temp[i]=tour[start+1];
+		if(c[tour[start]][tour[i]]+(ccost=tspdp(c,temp,start+1,n))&ltmincost)
+		{
+			mincost=c[tour[start]][tour[i]]+ccost;
+			for(int k=0;k &lt n;k++)
+			mintour[k]=temp[k];
+		}
+	}
+	for(i=0;i &lt n;i++)
+	tour[i]=mintour[i];
+	//printf("mincost %d\n",mincost);
+	return mincost;
+}
+int tspnn(int c[][max],int tour[],int start,int n)
+{
+	int nn[max][max],mincost=0,ncost=999;
+	int i,j,k, next, newnext;
+	for(i=0;i &lt n;i++)
+		for(j=0;j &lt n;j++)
+		{
+			nn[i][j]=c[i][j];
+		}
+		next=start;
+		k=0;
+		while(k&ltn-1)
+		{
+			ncost=999;
+			for(j=0;j &lt n;j++)
+			if(nn[next][j]&ltncost)
+			{
+				ncost=nn[next][j];
+				newnext=j;
+			}
+			printf("nextnew=%d\n",newnext);
+			k=k++;
+			for(j=0;j &lt n;j++)
+			{
+				nn[j][newnext]=999;
+			}
+			if(next==start)
+				for(j=0;j &lt n-1;j++)
+				{
+					nn[j][next]=999;
+				}
+			tour[k]=newnext;
+			next=newnext;
+			mincost=mincost+ncost;
+				
+		}
+	    mincost=mincost +c[next][start];
+	    return mincost;
+}					
+</pre>
+</code>
+				</div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; CODE DICTIONARY 2015</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>

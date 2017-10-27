@@ -1,0 +1,203 @@
+<html>
+<body>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>CD-Searching</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">CODE DICTIONARY</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="post.html">Programs</a>
+                    </li>
+					<li>
+                        <a href="about.html">Download</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact Us!</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>Searching</h1>
+                      
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+				<h3>Breath First Search</h3>
+				<p>Breadth-first search (BFS) is an algorithm for traversing or searching tree or graph data structures. It starts at the tree root (or some arbitrary node of a graph, sometimes referred to as a 'search key') and explores the neighbor nodes first, before moving to the next level neighbors.
+
+BFS was invented in the late 1950s by E. F. Moore, who used it to find the shortest path out of a maze,and discovered independently by C. Y. Lee as a wire routing algorithm (published 1961).</p>
+					<h3>When should Breath First Search(B.F.S) be used?</h3>
+					<p>This non-recursive implementation is similar to the non-recursive implementation of depth-first search, but differs from it in two ways:
+
+it uses a queue instead of a stack and
+it checks whether a vertex has been discovered before enqueueing the vertex rather than delaying this check until the vertex is dequeued from the queue.
+The distance attribute of each vertex (or node) is needed for example when searching for the shortest path between nodes in a graph. At the beginning of the algorithm, the distance of each vertex is set to INFINITY, which is just a word that represents the fact that a node has not been reached yet, and therefore it has no distance from the starting vertex. We could have used other symbols, such as -1, to represent this concept.
+
+The parent attribute of each vertex can also be useful to access the nodes in a shortest path, for example by backtracking from the destination node up to the starting node, once the BFS has been run, and the predecessors nodes have been set.
+
+The NIL is just a symbol that represents the absence of something, in this case it represents the absence of a parent (or predecessor) node; sometimes instead of the word NIL, words such as null, none or nothing can also be used.
+
+Note that the word node is usually interchangeable with the word vertex.
+
+Breadth-first search produces a so-called breadth first tree</p>
+					<h3>Program :</h3>
+					<code>
+					<pre>
+#include&ltstdio.h&gt
+#include&ltconio.h&gt
+int a[20][20],q[20],visited[20],n,i,j,f=0,r=-1;
+void bfs(int v)
+{
+ for(i=1;i&lt=n;i++)
+  if(a[v][i] && !visited[i])
+   q[++r]=i;
+ if(f&lt=r)
+ {
+  visited[q[f]]=1;
+  bfs(q[f++]);
+ }
+}
+void main()
+{
+ int v;
+ clrscr();
+ printf("\n Enter the number of vertices:");
+ scanf("%d",&n);
+ for(i=1;i&lt=n;i++)
+ {
+  q[i]=0;
+  visited[i]=0;
+ }
+ printf("\n Enter graph data in matrix form:\n");
+ for(i=1;i&lt=n;i++)
+  for(j=1;j&lt=n;j++)
+   scanf("%d",&a[i][j]);
+ printf("\n Enter the starting vertex:");
+ scanf("%d",&v);
+ bfs(v);
+ printf("\n The node which are reachable are:\n");
+ for(i=1;i&lt=n;i++)
+  if(visited[i])
+   printf("%d\t",i);
+  else
+   printf("\n Bfs is not possible");
+ getch();
+}
+</pre>
+</code>
+				</div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; code DICTIONARY 2015</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>

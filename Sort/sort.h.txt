@@ -1,0 +1,146 @@
+int low,high,pivot,i,j,temp;
+
+int quicksort(int array[10],int first,int last){
+    int pivot,j,temp,i;
+
+     if(first<last){
+         pivot=first;
+         i=first;
+         j=last;
+
+         while(i<j){
+             while(array[i]<=array[pivot]&&i<last)
+                 i++;
+             while(array[j]>array[pivot])
+                 j--;
+             if(i<j){
+                 temp=array[i];
+                  array[i]=array[j];
+                  array[j]=temp;
+             }
+         }
+
+         temp=array[pivot];
+         array[pivot]=array[j];
+         array[j]=temp;
+         quicksort(array,first,j-1);
+         quicksort(array,j+1,last);
+
+    }
+	printf("\nSorting by quick sort : ");
+	for(i=0;i<size;i++)
+   	 printf(" %d",array[i]);
+	getch();
+	return 0;
+}
+
+void mergesort(int array[],int low,int high){
+
+    int mid;
+
+    if(low<high){
+         mid=(low+high)/2;
+         mergeSort(arr,low,mid);
+         mergeSort(arr,mid+1,high);
+         merge(arr,low,mid,high);
+    }
+	printf("\nSorting by merge sort : ");
+	for(i=0;i<size;i++)
+   	 printf(" %d",array[i]);
+	getch();
+	return 0;
+}
+
+int merge(int array[],int low,int mid,int high){
+
+    int i,m,k,l,temp[MAX];
+
+    l=low;
+    i=low;
+    m=mid+1;
+
+    while((l<=mid)&&(m<=high)){
+
+         if(arr[l]<=array[m]){
+             temp[i]=array[l];
+             l++;
+         }
+         else{
+             temp[i]=array[m];
+             m++;
+         }
+         i++;
+    }
+
+    if(l>mid){
+         for(k=m;k<=high;k++){
+             temp[i]=array[k];
+             i++;
+         }
+    }
+    else{
+         for(k=l;k<=mid;k++){
+             temp[i]=array[k];
+             i++;
+         }
+    }
+   
+    for(k=low;k<=high;k++){
+         array[k]=temp[k];
+    }
+}
+
+void selectionsort(array[])
+{
+	for(i=0;i<size;i++){
+      for(j=i+1;j<size;j++){
+           if(array[i]>array[j]){
+               temp=array[i];
+              array[i]=array[j];
+              array[j]=temp;
+           }
+      }
+  }
+	printf("\nSorting by Selection sort : ");
+	for(i=0;i<size;i++)
+   	 printf(" %d",array[i]);
+	getch();
+	return 0;	
+}
+
+void bubblesort(array[])
+{
+	for(i=size-2;i>=0;i--){
+      for(j=0;j<=i;j++){
+           if(array[j]>array[j+1]){
+               temp=array[j];
+              array[j]=array[j+1];
+              array[j+1]=temp;
+           }
+      }
+  }
+	printf("\nSorting by Bubble sort : ");
+	for(i=0;i<size;i++)
+   	 printf(" %d",array[i]);
+	getch();
+	return 0;
+}
+
+void insertionsort(array[])
+{
+	 for(i=1;i<size;i++){
+      temp=array[i];
+      j=i-1;
+      while((temp<array[j])&&(j>=0)){
+      array[j+1]=array[j];
+          j=j-1;
+      }
+      array[j+1]=temp;
+  }
+	
+	printf("\nSorting by Bubble sort : ");
+	for(i=0;i<size;i++)
+   	 printf(" %d",array[i]);
+	getch();
+	return 0;
+}

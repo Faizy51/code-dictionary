@@ -1,0 +1,31 @@
+#include<stdio.h>
+#include<sort.h>
+#include<conio.h>
+#include<process.h>
+
+void main()
+{
+	int array[10],choice,size;
+	
+	printf("Enter size of the array: ");
+	  scanf("%d",&size);
+	 
+	printf("Enter %d elements: ",size);
+  	for(i=0;i<size;i++)
+    	scanf("%d",&x[i]);
+
+	printf("\nSorting methods :-");
+	printf("\n\n1.Quick sort\n2.Merge sort\n3.Bubble sort\n4.Selection sort");	
+	
+	switch(choice)
+	{
+		case 1 : quicksort(array,0,size-1);
+		case 2 : mergesort(array,0,size-1);
+		case 3 : bubblesort(array);
+		case 4 : selectionsort(array[]);
+		case 5 : printf("\nInvalid input");
+			getch();	
+			exit(0);
+	}
+	getch();
+}
